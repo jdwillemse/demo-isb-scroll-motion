@@ -1,0 +1,42 @@
+.standard-block {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  /* outline: 2px solid purple; */
+}
+
+/* image block */
+/* -------------------------------------------------------------------------- */
+.image-content-wrap {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  height: 100%;
+  background: #0000ff;
+}
+
+.image-content-wrap img {
+  position: absolute;
+  height: calc(100% + 100px);
+  transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translate3d(0, var(--imageOffset), 0) scale(1.1);
+}
+
+/* .image-content-wrap img.shadow {
+  opacity: 0.5;
+} */
+
+/* copy side */
+/* -------------------------------------------------------------------------- */
+.copy-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.copy-wrap > * {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
