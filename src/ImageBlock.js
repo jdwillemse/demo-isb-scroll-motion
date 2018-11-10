@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import Waypoint from "react-waypoint";
 import { throttle } from "lodash";
 
-import "./ImageBlock.css";
+import "./ImageBlock.scss";
 
 const kickerArray = ["Sparnaður", "Fyrirtækjaþjónusta"];
 const titleArray = [
@@ -69,6 +69,7 @@ const bodyArray = [
     </ul>
   </div>
 ];
+const ctaArray = ["Lesa nánar", "Kynntu þér séreignarsparnað"];
 
 class ImageBlock extends PureComponent {
   componentDidMount() {
@@ -77,8 +78,12 @@ class ImageBlock extends PureComponent {
 
   handleWaypointEnter = props => {
     // if (this.props.index !== 1) return;
-    console.log("-----enter", this.props.index);
+    // console.log("-----enter", this.props.index);
     window.addEventListener("scroll", this.handleScroll, true);
+
+    if (this.containerEl.classList.contains("unseen")) {
+      this.containerEl.classList.remove("unseen");
+    }
   };
 
   handleWaypointLeave = () => {
@@ -99,6 +104,7 @@ class ImageBlock extends PureComponent {
     const kicker = kickerArray[random()];
     const title = titleArray[random()];
     const body = bodyArray[random()];
+    const cta = ctaArray[random()];
 
     return (
       <Waypoint
@@ -106,7 +112,7 @@ class ImageBlock extends PureComponent {
         onLeave={this.handleWaypointLeave}
       >
         <section
-          className="standard-block row"
+          className="standard-block unseen row"
           ref={el => {
             this.containerEl = el;
           }}
@@ -131,6 +137,7 @@ class ImageBlock extends PureComponent {
                 </h2>
               )}
               {body && <div className="text-body">{body}</div>}
+              {cta && <button>{cta}</button>}
             </div>
           </div>
         </section>

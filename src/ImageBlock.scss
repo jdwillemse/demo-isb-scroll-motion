@@ -5,6 +5,10 @@
   /* outline: 2px solid purple; */
 }
 
+.standard-block:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
 /* image block */
 /* -------------------------------------------------------------------------- */
 .image-content-wrap {
@@ -13,7 +17,7 @@
   overflow: hidden;
   justify-content: center;
   height: 100%;
-  background: #0000ff;
+  background: lightgrey;
 }
 
 .image-content-wrap img {
@@ -22,10 +26,6 @@
   transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translate3d(0, var(--imageOffset), 0) scale(1.1);
 }
-
-/* .image-content-wrap img.shadow {
-  opacity: 0.5;
-} */
 
 /* copy side */
 /* -------------------------------------------------------------------------- */
@@ -39,4 +39,20 @@
 .copy-wrap > * {
   margin-top: 20px;
   margin-bottom: 20px;
+  transition: transform 0.75s cubic-bezier(0.645, 0.045, 0.355, 1),
+  opacity 0.75s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.unseen .copy-wrap > * {
+  transform: translate3d(0, 40px, 0);
+  opacity: 0;
+}
+
+@for $i from 1 through 10 {
+  // for each $col_#{i}
+  .copy-wrap > :nth-child(#{$i}) {
+    transition-delay: ($i * 0.04s);
+  }
 }
