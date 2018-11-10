@@ -30,7 +30,7 @@ const bodyArray = [
         href="https://www.isb.is/netbank/payments/regularpayments"
         className="default"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
       >
         Skrá reglulegan sparnað í netbanka
       </a>
